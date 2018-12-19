@@ -10,6 +10,7 @@
 // git add .
 // git config
 // git remote -v
+// rm -rf .git    command to delete git repository
 
 // steps to deploy to heroku
 // creat heroku app
