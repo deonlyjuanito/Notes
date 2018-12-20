@@ -1,9 +1,9 @@
-import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
 
 // this function will call the callback whenever new user sign in
-Accounts.validateNewUser(user => {
+export const validateNewUserCallBack = user => {
     const email = user.emails[0].address;
 
     new SimpleSchema({
@@ -16,4 +16,8 @@ Accounts.validateNewUser(user => {
     });
 
     return true; // this is a required return. The validateNewUser must return a true value to indicate that the validation is sucessfull
-});
+};
+
+if (Meteor.isServer) {
+    Accounts.validateNewUser(validateNewUserCallBack);
+}
