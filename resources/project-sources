@@ -17,4 +17,9 @@ https://github.com/practicalmeteor/meteor-mocha/
 https://github.com/meteortesting/meteor-mocha/
 https://github.com/mjackson/expect
 https://docs.meteor.com/api/accounts-multi.html#AccountsServer-validateNewUser
+https://sinonjs.org/releases/v7.2.2/spies/
+https://github.com/meteor/react-packages/tree/devel/packages/react-meteor-data#usage // withtracker
+https://airbnb.io/enzyme/docs/api/shallow.html  // shallow for test
+https://reactjs.org/docs/react-api.html#react.purecomponent // purecomponent
+https://reacttraining.com/react-router/web/api/MemoryRouter/initialentries-array // MemoryRouter
 

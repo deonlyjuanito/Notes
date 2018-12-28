@@ -18,3 +18,4 @@ describe('meteor-boilerplate', function() {
         });
     }
 });
+
