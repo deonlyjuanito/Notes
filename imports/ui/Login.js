@@ -12,7 +12,7 @@ export class Login extends Component {
         };
     }
     onSubmit(e) {
-        // e.preventDefault();
+        e.preventDefault();
         let email = this.refs.email.value.trim();
         let password = this.refs.password.value.trim();
 
