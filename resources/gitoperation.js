@@ -11,6 +11,8 @@
 // git config
 // git remote -v
 // rm -rf .git    command to delete git repository
+// git remote remove origin // delete the remote origin repo
+
 
 // steps to deploy to heroku
 // creat heroku app

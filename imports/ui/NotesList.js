@@ -3,8 +3,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Notes } from '../api/notes';
 import PropTypes from 'prop-types';
-import NoteListHeader from './NotesListHeader';
+import NoteListHeader from './NoteListHeader';
 import NoteListItem from './NoteListItem';
+import NoteListEmptyItem from './NoteListEmptyItem';
 
 export const NoteList = props => {
     let displayNotes = props.notes.map(note => {
@@ -17,7 +18,7 @@ export const NoteList = props => {
     return (
         <div>
             <NoteListHeader />
-            {displayNotes}
+            {props.notes.length > 0 ? displayNotes : <NoteListEmptyItem />}
         </div>
     );
 };
