@@ -17,11 +17,11 @@ const onEnterPublicPage = Component => {
     }
 };
 
-const onEnterPrivatePage = Component => {
+const onEnterPrivatePage = (Component, props) => {
     if (!Meteor.userId()) {
         return <Redirect to='/' />;
     } else {
-        return <Component />;
+        return <Component {...props} />;
     }
 };
 
@@ -42,8 +42,8 @@ export const routes = (
         <Switch>
             <Route exact path='/' render={() => onEnterPublicPage(Login)} />
             <Route path='/signup' render={() => onEnterPublicPage(Signup)} />
-            <Route path='/dashboard' render={() => onEnterPrivatePage(Dashboard)} />
-            <Route path='/dashboard/:id' render={() => onEnterPrivatePage(Dashboard)} />
+            <Route exact path='/dashboard' render={props => onEnterPrivatePage(Dashboard, props)} />
+            <Route path='/dashboard/:id' render={props => onEnterPrivatePage(Dashboard, props)} />
             <Route path='*' component={NotFound} />
         </Switch>
     </Router>
