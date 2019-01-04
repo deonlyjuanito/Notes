@@ -6,22 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { NoteList } from './NotesList';
 import '../util/EnzmeConfigure';
 
-const notes = [
-    {
-        _id: 'noteId1',
-        title: 'Test title',
-        body: '',
-        updateAt: 0,
-        userId: 'userId1'
-    },
-    {
-        _id: 'noteId2',
-        title: '',
-        body: 'Something is here',
-        updateAt: 0,
-        userId: 'userId2'
-    }
-];
+import { notes } from '../fixtures/fixtures';
 
 if (Meteor.isClient) {
     describe('NoteList', function() {
