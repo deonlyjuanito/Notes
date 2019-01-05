@@ -2,6 +2,7 @@ import PrivateHeader from '../ui/PrivateHeader';
 import NoteList from './NotesList';
 import { Session } from 'meteor/session';
 import React, { Component } from 'react';
+import Editor from './Editor';
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -15,8 +16,8 @@ class Dashboard extends Component {
                 <div>
                     <PrivateHeader title='Dashboard' />
                     <div className='page-content'>
-                        {console.log(this.props)}
                         <NoteList />
+                        <Editor />
                     </div>
                 </div>
             </div>
