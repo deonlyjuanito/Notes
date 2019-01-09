@@ -4,28 +4,61 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { Notes } from '../api/notes';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 export class Editor extends Component {
+    constructor() {
+        super();
+        this.state = {
+            title: '',
+            body: ''
+        };
+    }
     handleBodyChange(e) {
+        const body = e.target.value;
+        this.setState({ body });
+
         this.props.call('notes.update', this.props.note._id, {
-            body: e.target.value
+            body
         });
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        const currentNoteId = this.props.note ? this.props.note._id : undefined;
+        const prevNoteId = prevProps.note ? prevProps.note._id : undefined;
+        if (currentNoteId && currentNoteId !== prevNoteId) {
+            this.setState({
+                title: this.props.note.title,
+                body: this.props.note.body
+            });
+        }
+    }
+
     render() {
         if (this.props.note) {
             return (
                 <div>
                     <input
-                        value={this.props.note.title}
+                        value={this.state.title}
                         placeholder='Untitled Note'
                         onChange={e => {
+                            const title = e.target.value;
+                            this.setState({ title });
                             this.props.call('notes.update', this.props.note._id, {
-                                title: e.target.value
+                                title
                             });
                         }}
                     />
-                    <textarea value={this.props.note.body} placeholder='Your note here' onChange={this.handleBodyChange.bind(this)} />
-                    <button>Delete</button>
+                    <textarea value={this.state.body} placeholder='Your note here' onChange={this.handleBodyChange.bind(this)} />
+                    <button
+                        onClick={() => {
+                            this.props.call('notes.remove', this.props.note._id);
+                            Session.set('selectedNoteId', undefined);
+                            this.props.history.push('/dashboard');
+                        }}
+                    >
+                        Delete Note
+                    </button>
                 </div>
             );
         } else {
@@ -35,14 +68,20 @@ export class Editor extends Component {
 }
 Editor.propTypes = {
     selectedNoteId: PropTypes.string,
-    note: PropTypes.object
+    note: PropTypes.object,
+    call: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
 };
 
-export default withTracker(() => {
-    const selectedNoteId = Session.get('selectedNoteId');
-    return {
-        selectedNoteId,
-        note: Notes.findOne(selectedNoteId),
-        call: Meteor.call
-    };
-})(Editor);
+export default withRouter(
+    withTracker(() => {
+        const selectedNoteId = Session.get('selectedNoteId');
+        console.log(selectedNoteId);
+        return {
+            selectedNoteId,
+            note: Notes.findOne(selectedNoteId),
+            call: Meteor.call,
+            history
+        };
+    })(Editor)
+);
