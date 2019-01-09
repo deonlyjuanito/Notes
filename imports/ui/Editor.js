@@ -54,7 +54,9 @@ export class Editor extends Component {
                         onClick={() => {
                             this.props.call('notes.remove', this.props.note._id);
                             Session.set('selectedNoteId', undefined);
-                            this.props.history.push('/dashboard');
+                            if (this.props.history) {
+                                this.props.history.push('/dashboard');
+                            }
                         }}
                     >
                         Delete Note
@@ -69,8 +71,7 @@ export class Editor extends Component {
 Editor.propTypes = {
     selectedNoteId: PropTypes.string,
     note: PropTypes.object,
-    call: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired
+    call: PropTypes.func.isRequired
 };
 
 export default withRouter(
@@ -80,8 +81,7 @@ export default withRouter(
         return {
             selectedNoteId,
             note: Notes.findOne(selectedNoteId),
-            call: Meteor.call,
-            history
+            call: Meteor.call
         };
     })(Editor)
 );

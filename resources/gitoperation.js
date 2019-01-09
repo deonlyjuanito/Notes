@@ -12,7 +12,7 @@
 // git remote -v
 // rm -rf .git    command to delete git repository
 // git remote remove origin // delete the remote origin repo
-// git -a -m  command to add files and commit both of them at the same time. (Note: does not tracking a new file!)
+// git commit -a -m  command to add files and commit both of them at the same time. (Note: does not tracking a new file!)
 
 
 // steps to deploy to heroku
