@@ -11,6 +11,7 @@ export class Login extends Component {
             error: ''
         };
     }
+
     onSubmit(e) {
         e.preventDefault();
         let email = this.refs.email.value.trim();

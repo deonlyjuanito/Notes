@@ -10,6 +10,7 @@ class Dashboard extends Component {
             Session.set('selectedNoteId', this.props.match.params.id);
         }
     }
+
     render() {
         return (
             <div>
