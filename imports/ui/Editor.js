@@ -77,7 +77,6 @@ Editor.propTypes = {
 export default withRouter(
     withTracker(() => {
         const selectedNoteId = Session.get('selectedNoteId');
-        console.log(selectedNoteId);
         return {
             selectedNoteId,
             note: Notes.findOne(selectedNoteId),
