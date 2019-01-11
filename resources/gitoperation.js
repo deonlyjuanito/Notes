@@ -28,3 +28,6 @@
     // remove the last "/" from the root url ex: heroku config:set ROOT_URL="https://short-link-dennis-juanito.herokuapp.com" change the root url depends on your project
 // Push the project to the heroku respository
     // git push heroku master
+
+// open the application
+    // heroku open
