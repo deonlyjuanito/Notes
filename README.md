@@ -21,7 +21,7 @@ Runing the test is super easy. All you hav eto do is run the following commands 
 npm test
 ```
 
-`or`
+or
 
 ```
 npm run test-watch
