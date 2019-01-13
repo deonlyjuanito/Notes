@@ -15,7 +15,7 @@ class Dashboard extends Component {
         return (
             <div>
                 <div>
-                    <PrivateHeader title='Dashboard' />
+                    <PrivateHeader title='Notes' />
                     <div className='page-content'>
                         <div className='page-content__sidebar'>
                             <NoteList />
