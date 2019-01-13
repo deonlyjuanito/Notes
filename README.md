@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-This app requires you to haave Meteor installed on your machine. Then you can clone the repo and run the following
+This app requires you to have Meteor installed on your machine. Then you can clone the repo and run the following
 
 
 ```
